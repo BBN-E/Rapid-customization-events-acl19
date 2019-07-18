@@ -1,0 +1,82 @@
+{
+	"trigger.restrict_none_examples_using_keywords": false,
+    "data": {
+        "test": {
+            "features": "/nfs/mercury-04/u40/ychan/repos/nlplingo/experiments/ace_09062018/test.features", 
+            "filelist": "/nfs/raid84/u12/ychan/data/ace/filelist/apf_lingo.test.filelist"
+        }
+    }, 
+   "embeddings": {
+        "type": "context_word_embeddings",
+        "embedding_file": "/nfs/raid84/u12/jfaschin/bert_embeddings_for_ace/bert_embeddings_w_none.npz", 
+        "missing_token": "_oov", 
+        "none_token": "_pad", 
+        "vector_size": 3072, 
+        "vocab_size": 301259,
+        "none_token_index": 301259
+    }, 
+   "dependency_embeddings": {
+        "type": "dependency_embeddings",
+        "embedding_file": "/nfs/raid84/u12/jfaschin/dependency_embeddings/deps.contexts.npz", 
+        "missing_token": "det_a", 
+        "none_token": "det_the", 
+        "vector_size": 300, 
+        "vocab_size": 926907,
+        "none_token_index": 0
+    }, 
+    "extractors": [
+        {
+            "domain_ontology": "/nfs/raid84/u12/ychan/data/ace/role_mappings.ace.txt", 
+            "hyper-parameters": {
+                "batch_size": 50, 
+                "cnn_filter_lengths": [
+                    2,3,4,5
+                ], 
+                "dropout": 0.5, 
+                "entity_embedding_vector_length": 50, 
+                "epoch": 30,
+				"fine-tune_epoch": 0, 
+                "neighbor_distance": 0, 
+                "number_of_feature_maps":  200, 
+                "position_embedding_vector_length": 50, 
+                "positive_weight": 5
+            }, 
+            "max_sentence_length": 231, 
+            "model_file": "/nfs/raid87/u15/users/jfaschin/nlplingo_causeeffect/expts/cnn_trigger_search_thorough/e30w5cfl3evl50nd3f200fte0b100//trigger.hdf", 
+            "model_flags": {
+				"use_trigger": true,
+				"use_head": true,
+				"use_event_embedding": false,
+				"use_bio_index": true,
+				"use_lex_info": false,
+                "train_embeddings": false
+            },
+            "int_type": "int32",
+            "model_type": "event-trigger_embedded"
+        },
+        {
+            "domain_ontology": "/nfs/raid84/u12/ychan/data/ace/role_mappings.ace.txt",
+            "hyper-parameters": {            
+				"neighbor_distance": +neighbor_distance+ 
+            }, 
+            "max_sentence_length": 301, 
+            "model_file": "+model_output_path+",
+            "model_flags": {
+				"use_trigger": true,
+				"use_head": true,
+				"use_event_embedding": true,
+                "train_embeddings": false,
+                "do_dmcnn": false,
+                "use_position_feat": +use_position_feat+,
+                "use_common_entity_name": +use_common_entity_name+,
+                "use_dep_emb": +use_dep_embedding+
+            },
+            "int_type": "int32",
+            "model_type": "event-argument_embedded"
+        }
+    ], 
+    "negative_trigger_words": "/nfs/mercury-04/u40/ychan/event_type_extension/negative_words", 
+    "train.score_file": "+train_score_file_path+",
+    "test.score_file": "+test_score_file_path+",
+	"save_model": true
+}

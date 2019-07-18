@@ -1,0 +1,42 @@
+
+# General notes about the runjobs files
+
+Both run_ace_trigger.pl and run_ace_role.pl use the perl module `Batch.pm` that contains the 
+subroutine `execute_train_dev_test` for actually starting each NLPlingo run.
+
+$Batch::SINGULARITY_GPU_QUEUE - specifies the BATCH_QUEUE that will be used when NLPlingo is executed.
+This may need to change depending on the memory requirements of the model being loaded. 
+
+$Batch::SINGULARITY_WRAPPER - specifies the script use to wrap the run of NLPlingo in a singularity container.
+This can generally be left as is.
+
+Both run_ace_trigger.pl and run_ace_role.pl use generate_*_runs subroutines to create hash arrays specifying the 
+details for different configuration runs of NLPlingo, inside of these functions the user can specify the ranges
+for various parameters. Right now the functions are separated between the style of network that was selected to
+learn an extractor.
+
+In both cases the $exptName variable defines the root name of the experiment as it shows up in output.
+
+# Notes for run_ace_trigger.pl
+The current models implemented can run on all GPU queues using the default SINGULARITY_WRAPPER.
+
+An example execution is:
+
+./run_ace_trigger.pl -sge
+
+# Notes for run_ace_role.pl
+Models that require alot of GPU ram such as the arg.embedded models with all of the flags on in
+generate_embedded_runs will need to run on
+
+$Batch::SINGULARITY_GPU_QUEUE = "allGPUs-v100";
+or better.
+
+Testing the arg models with predicted triggers will require modifiying the appropriate
+template file in the nlplingo/templates/ folder to point to a compatible trigger model. The trigger model
+will need to have the same embeddings as the argument model and the same domain ontology file.
+
+See the only runjobs call in Batch.pm for info on the format of the appropriate template file name.
+
+
+An example execution is:
+./run_ace_role.pl -sge

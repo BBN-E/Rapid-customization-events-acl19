@@ -1,0 +1,28 @@
+
+==== Install the following to use CyberLingo ====
+• conda create --name cyberlingo python=2.7.12 numpy=1.12.1 scipy=0.19.0 openblas=0.2.19 theano=0.9.0 keras=2.0.2 spacy=1.8.2
+• source activate cyberlingo
+• python -m spacy download en
+• conda install -c anaconda future
+• conda install -c anaconda scikit-learn
+• conda install -c conda-forge jsonpickle 
+• conda install -c conda-forge python-crfsuite
+• conda install -c anaconda mkl-service
+
+export env KERAS_BACKEND=theano
+
+==== How to use CyberLingo to train & test for triggers & arguments ====
+
+PYTHONPATH=. python event/train_test.py --params cnn.ace.params --mode train_trigger
+PYTHONPATH=. python event/train_test.py --params cnn.ace.params --mode train_argument
+PYTHONPATH=. python event/train_test.py --params cnn.ace.params --mode test_trigger
+PYTHONPATH=. python event/train_test.py --params cnn.ace.params --mode test_argument
+
+
+
+PYTHONPATH=. python decode_text.py --params decode.params --textfile /home/ychan/repos/cause-effect/data/blog/annotation/snippet/frame/2017.11.txt
+
+PYTHONPATH=. python annotation/spannotator.py --annotation_dir ../data/spannotator/db/tasks --text_dir ../data/spannotator/text --output_dir ../data/spannotator/output
+
+PYTHONPATH=/home/ychan/repos/cause-effect/python python /home/ychan/repos/cause-effect/python/cyberlingo/event/train_test.py --params cnn.precursor.params --mode train_sentence
+

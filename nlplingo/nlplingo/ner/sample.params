@@ -1,0 +1,45 @@
+# Options: Blog, SocialMediaPosting
+content_type: PLEASE_SPECIFY_FROM_CALLING_CODE
+
+base_dir: PLEASE_SPECIFY_FROM_CALLING_CODE
+
+brown_cluster.dir: %base_dir%/resources/BBN/brown_clusters
+brown_cluster.file: %brown_cluster.dir%/ace2005.hBits
+
+name_lists.dir: %base_dir%/resources/BBN/name_lists
+name_lists.file: %name_lists.dir%/list-per,%name_lists.dir%/list-org,%name_lists.dir%/list-gpe,%name_lists.dir%/list-vendor
+name_lists.label: PER,ORG,GPE,VEN
+
+# Overall settings for blogs
+blog.embeddings.dir: %base_dir%/resources/blog_embeddings
+blog.embeddings.file: %blog.embeddings.dir%/blog.lowercase.skip.iter3.size100.w2v.utf8
+blog.embeddings.scale: 1.0
+blog.use_brown_clusters: true
+blog.use_traditional_features: true
+blog.use_idf_word_features: true
+blog.use_embeddings: false
+blog.use_lowercase_embeddings: true
+blog.use_postag: false
+
+# Overall settings for Twitter
+tweet.embeddings.dir: %base_dir%/resources/twitter_embeddings
+tweet.embeddings.file: %tweet.embeddings.dir%/w2v.noheader.unknown.txt.pruned
+tweet.embeddings.scale: 1.0
+tweet.use_brown_clusters: true
+tweet.use_traditional_features: true
+tweet.use_idf_word_features: true
+tweet.use_embeddings: true
+tweet.use_lowercase_embeddings: true
+tweet.use_postag: false
+
+# Overall settings for news
+news.embeddings.dir: %base_dir%/resources/baroni_embeddings
+news.embeddings.file: %news.embeddings.dir%/EN-wform.w.5.cbow.neg10.400.subsmpl.txt.spaceSep.utf8
+news.embeddings.scale: 1.0
+news.use_brown_clusters: true
+news.use_traditional_features: true
+news.use_idf_word_features: true
+news.use_embeddings: false
+news.use_lowercase_embeddings: true
+news.use_postag: false
+

@@ -1,0 +1,53 @@
+{
+    "ADJUDICATED_SENTENCE_TABLE_NAME": "sentence_2",
+    "ANNOTATED_INSTANCE_TABLE_NAME": "annotation_2",
+    "BACKEND_RUNTIME_FOLDER": "/hat_runtime",
+    "BIN_CALCULATE_PAIRWISE_SIMILARITY": "/home/hqiu/CauseEx-novel-event-ui/java/musiena/musiena-common/target/appassembler/bin/calculatePairwiseSimilarity",
+    "BIN_CBC": "/home/hqiu/CauseEx-novel-event-ui/java/novel-events/necd-cluster/target/appassembler/bin/runCBC",
+    "BIN_CBC_TRIGGER_SENTENCEINFO_GENERATOR": "/home/hqiu/CauseEx-novel-event-ui/java/causeex/causeex-event/target/appassembler/bin/CbcTriggerSentenceInfoGenerator",
+    "BIN_EVENT_ARGUMENT_ANNOTATION_EXAMPLE_GENERATOR": "/home/hqiu/CauseEx-novel-event-ui/java/causeex/causeex-event/target/appassembler/bin/EventArgumentAnnotationExampleGenerator",
+    "BIN_HAC": "/home/hqiu/CauseEx-novel-event-ui/java/novel-events/necd-cluster/target/appassembler/bin/runHAC",
+    "CONFIG_FILE_PATH": "/Hume_release/HAT/backend/config_default.json",
+    "CORPORA_FOR_DB_BOOTSTRAPING": [
+        {
+            "original_cbc_m3_trigger_path":"/hat_data/corpus/event_ui_demo_trigger.ljson",
+            "original_cbc_m3_sentence_path":"/hat_data/corpus/event_ui_demo_sentence.ljson",
+            "original_corpus_folder_path":"/hat_data/corpus/event_ui_demo",
+            "corpus_name":"event_ui_demo"
+        }
+    ],
+    "CORPORA_FOR_UI_BOOTSTRAPING": [
+        "event_ui_demo"
+    ],
+    "DATA_EXAMPLE_JSON_FILE_PATH": "/hat_data/data_example_events.json",
+    "DB_MONGOURI": "mongodb://admin:secret@localhost/admin?authSource=admin",
+    "DB_NAME": "admin",
+    "DB_PASSWORD": "secret",
+    "DB_SCRATCH_TABLE_NAME": "annotation_buffer_hqiu",
+    "DB_SCRATCH_TABLE_NAME_2": "annotation_buffer_hqiu_2",
+    "DB_URL": "localhost",
+    "DB_USERNAME": "admin",
+    "DOCID_TABLE_NAME": "docid_2",
+    "EVENT_ADJUDICATED_POOL_PAGINATION_SIZE": 200,
+    "EVENT_YAML_FILE_PATH": "/hat_data/event_ontology.yaml",
+    "HAT_DATA_FOLDER": "/hat_data",
+    "JOSHUA_FIND_SIMILAR_MATRIX_INDEX": "/hat_data/index.json",
+    "JOSHUA_FIND_SIMILAR_MATRIX_NPZ": "/hat_data/matrix.npz.npy",
+    "LEMMA_FILE_PATH": "/hat_data/lemma.nv",
+    "NLPLINGO_OUTPUT_MAPPING_PATH": "/home/hqiu/nlplingo_try",
+    "NUM_DEFAULT_NUM_OF_SENTENCE_IN_TRIGGER": 10,
+    "SCRATCH_PLACE": "/tmp/tmp",
+    "SERVE_PORT": 5050,
+    "STOPWORD_LIST_PATH": "/home/hqiu/hat_data/stopwords_empty.txt",
+    "TRIGGER_CANDIDATE_FREQ_FILTER": 2,
+    "TXT_WORDEMBEDDINGS": "/hat_data/EN-wform.w.5.cbow.neg10.400.subsmpl.txt.spaceSep.utf8",
+    "init_argument_session_id": "event_argument_demo",
+    "init_session_id": "event_trigger_demo",
+    "serifxml_list_path_for_argument": "/home/hqiu/nlplingo_try/corpus/wm_m12.list",
+    "NEGATIVE_WORDS": "/hat_data/negative_words",
+    "SERIFXML_PY3_PATH": "/SVN_PROJECT_ROOT_LOCAL",
+    "NLPLINGO_ROOT": "/Hume_release/nlplingo",
+    "ANACONDA_ROOT":"/anaconda-py3",
+    "CONDA_ENV_NLPLINGO": "py3-tf1"
+    
+}

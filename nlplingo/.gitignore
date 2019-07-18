@@ -1,0 +1,16 @@
+target
+*.swp
+*.swo
+*~
+.classpath
+.project
+.settings
+*.iml
+*.idea
+ckpts
+expts
+logfiles
+etemplates
+*.pyc
+temp
+/.venv/

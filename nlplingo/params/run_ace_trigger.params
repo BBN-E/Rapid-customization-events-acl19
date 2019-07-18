@@ -1,0 +1,56 @@
+# A canonical params file for ACE pair model
+
+#### expt config
+expt_name: ace-trigger
+run: run1
+
+#### hyper-params
+trigger.positive_weight: 3
+trigger.epoch: 10
+trigger.batch_size: 110
+trigger.num_feature_maps: 200
+
+role.positive_weight: 10
+role.epoch: 20
+role.batch_size: 40
+role.num_feature_maps: 300
+
+#### to be changed as necessary (just for ychan)
+home_dir: /nfs/mercury-04/u40/ychan
+filelist_dir: %home_dir%/repos/cause-effect/data/ace_official_English_timex2norm/filelist/network
+
+#### hyper-params that are currently fixed
+cnn.neighbor_dist: 3
+cnn.use_bio_index: False
+cnn.int_type: int32
+cnn.position_embedding_vec_len: 5
+cnn.filter_length: 3
+cnn.dropout: 0.5
+role.use_head: True
+role.entity_embedding_vec_length: 10
+
+#### following are fixed
+#### NOTE!! we use 'test' just to make sure this sample runjobs sequence runs fast. 
+#### You should change it to using: train.filelist, dev.filelist, test.filelist
+filelist.train: %filelist_dir%/train.filelist
+filelist.dev: %filelist_dir%/dev.filelist
+filelist.test: %filelist_dir%/test.filelist
+
+domain: ace
+domain_ontology: /nfs/raid87/u15/users/ychan/low_shot_keywords/data/role_mappings.ace.txt
+
+embedding.embedding_file: %home_dir%/repos/cause-effect/resources/baroni_embeddings/EN-wform.w.5.cbow.neg10.400.subsmpl.txt.spaceSep.utf8
+embedding.vector_size: 400
+embedding.vocab_size: 251236
+embedding.none_token: .
+embedding.missing_token: the
+embedding.none_token_index: 0
+
+max_sent_length: 201
+
+negative_trigger_words: %home_dir%/event_type_extension/negative_words
+
+# following will be over-written by runjobs. nlplingo will write training model and score files to here, and also read model file from here during decoding
+output_dir: /nfs/mercury-04/u40/ychan/repos/nlplingo/temp/gpu
+trigger_model_dir: /nfs/mercury-04/u40/ychan/repos/nlplingo/temp/gpu
+

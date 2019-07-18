@@ -1,0 +1,6 @@
+
+Training and testing on ACE has become so frequently done, e.g. as on-boarding of nlpLingo to new people, or to test my own implementations after a major change, that I'm now including ACE param files here.
+
+PYTHONPATH=/nfs/mercury-04/u22/Active/Projects/SERIF/python:/nfs/mercury-04/u40/ychan/repos/nlplingo /nfs/mercury-04/u22/anaconda2/envs/tensorflow-1.5-gpu/bin/python /nfs/mercury-04/u40/ychan/repos/nlplingo/nlplingo/event/train_test.py --params run_ace_trigger.params --mode test_trigger
+
+

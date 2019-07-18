@@ -1,0 +1,36 @@
+
+embedding.embedding_file: /nfs/mercury-04/u40/ychan/repos/cause-effect/resources/baroni_embeddings/EN-wform.w.5.cbow.neg10.400.subsmpl.txt.spaceSep.utf8
+embedding.vector_size: 400
+embedding.vocab_size: 251235
+embedding.none_token: .
+embedding.missing_token: ,
+embedding.none_token_index: -1
+
+max_sent_length: 201
+
+cnn.neighbor_dist: 1
+cnn.use_bio_index: False
+cnn.int_type: int32
+cnn.position_embedding_vec_len: 5
+cnn.filter_length: 3
+cnn.dropout: 0.5
+
+trigger.positive_weight: 1.0
+trigger.batch_size: 170
+trigger.num_feature_maps: 200
+trigger.epoch: 10
+
+role.positive_weight: 1.0
+role.batch_size: 20
+role.num_feature_maps: 300
+role.entity_embedding_vec_length: 10
+role.epoch: 10
+
+filelist.train: /nfs/mercury-04/u40/ychan/repos/cause-effect/data/ace_official_English_timex2norm/filelist/annotation_filelist.train
+filelist.dev: /nfs/mercury-04/u40/ychan/repos/cause-effect/data/ace_official_English_timex2norm/filelist/annotation_filelist.dev
+filelist.test: /nfs/mercury-04/u40/ychan/repos/cause-effect/data/ace_official_English_timex2norm/filelist/annotation_filelist.test
+
+domain: ace
+
+output_dir: /nfs/mercury-04/u40/ychan/repos/cause-effect/frames/frame-experiments/ace
+
