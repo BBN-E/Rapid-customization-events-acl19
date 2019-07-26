@@ -1,4 +1,8 @@
-import os,sys,json,shutil,collections
+import json
+import os
+import shutil
+import sys
+
 current_script_path = __file__
 project_root = os.path.realpath(os.path.join(current_script_path,os.path.pardir,os.path.pardir,os.path.pardir))
 sys.path.append(project_root)
@@ -41,25 +45,20 @@ def nlplingo_serializer_flatten_flavor(parsed_dict_from_mongo, output_folder, ou
                 if argument_type != "trigger" and positive == Marking.POSITIVE:
                     argument_type_set.add(argument_type)
                     output_buffer.append("{}/{} {} {}\n".format(event_mention_type,argument_type,argument_start_char,argument_end_char+1))
-                if argument_type == "trigger" and positive == Marking.NEGATIVE:
+                if argument_type == "trigger" and positive != Marking.POSITIVE:
                     trigger_positive = False
-
+            ptr_to_span_file_output_buffer = span_file_serif_path_output_buffer.setdefault(
+                (potential_span_file_path, serifxml_path, doc_id), list())
             if output_negative_examples is True:
-                ptr_to_span_file_output_buffer = span_file_serif_path_output_buffer.setdefault(
-                    (potential_span_file_path, serifxml_path, doc_id), list())
                 sent_span_set.add((doc_id, event_mention_id.sentence_char_off_span.start_offset,
                                    event_mention_id.sentence_char_off_span.end_offset + 1))
 
             if should_output is True and trigger_positive is True:
                 if output_negative_examples is False:
-                    ptr_to_span_file_output_buffer = span_file_serif_path_output_buffer.setdefault(
-                        (potential_span_file_path, serifxml_path, doc_id), list())
                     sent_span_set.add((doc_id, event_mention_id.sentence_char_off_span.start_offset,
                                        event_mention_id.sentence_char_off_span.end_offset + 1))
-
                 ptr_to_span_file_output_buffer.append("<Event type=\"{}\">\n".format(event_mention_type))
                 ptr_to_span_file_output_buffer.append("{} {} {}\n".format(event_mention_type,event_mention_id.sentence_char_off_span.start_offset,event_mention_id.sentence_char_off_span.end_offset+1))
-
                 if len(output_buffer) > 0:
                     ptr_to_span_file_output_buffer.extend(output_buffer)
                 ptr_to_span_file_output_buffer.append("anchor {} {}\n".format(event_mention_id.trigger_char_off_span.start_offset,event_mention_id.trigger_char_off_span.end_offset+1))
