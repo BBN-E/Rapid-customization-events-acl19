@@ -33,8 +33,7 @@ Do ```export KERAS_BACKEND=tensorflow```
 
 #### Running nlplingo
 
-You need to point PYTHONPATH to 2 locations:
-- dir that contains serifxml.py
+You need to point PYTHONPATH to 1 locations:
 - dir where nlplingo resides
 
 This is an example command:
