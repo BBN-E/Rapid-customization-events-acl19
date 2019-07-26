@@ -1,4 +1,7 @@
-import os,sys,json,re,copy,shutil
+import os
+import re
+import sys
+
 current_script_path = __file__
 sys.path.append(os.path.realpath(os.path.join(current_script_path,os.path.pardir,os.path.pardir)))
 project_root = os.path.realpath(os.path.join(current_script_path,os.path.pardir,os.path.pardir))
@@ -11,17 +14,14 @@ except ImportError:
     # Python 2.x
     from urllib import quote_plus
 tuple_stype_re_pattern = re.compile(r"^\((\d+), (\d+)\)$")
-from event_trigger_data_management.serializer.nlplingo import NLPLINGOSerializerHAOLING
-from event_trigger_data_management.resolver.bad_event_type_name_resolver import resolve_slash
-from event_trigger_data_management.reader.mongodb import MongoDBReader
+from data_access_layer.trigger_annotation.mongodb import TriggerAnnotationMongoDBAccessLayer
+from data_access_layer.common.nlplingo import nlplingo_serializer_flatten_flavor
+
 
 def direct_passthrough(mongo_instance,session,DOCID_TABLE_NAME,output_folder):
-    mongodb_reader = MongoDBReader(mongo_instance,DOCID_TABLE_NAME,None,None)
-    annotated_pool = mongodb_reader.parse_db_session_table_directly_out(session)
-    annotated_pool = resolve_slash(annotated_pool)
-    docId_to_docPath = mongodb_reader.docId_to_docPath_mapping()
-    serialize = NLPLINGOSerializerHAOLING(annotated_pool,docId_to_docPath,output_folder)
-    serialize.serialize()
+    dao = TriggerAnnotationMongoDBAccessLayer()
+    annotations = dao.dump_annotation_out(mongo_instance, session, DOCID_TABLE_NAME)
+    nlplingo_serializer_flatten_flavor(annotations, output_folder)
 
 if __name__ == "__main__":
     from config import ReadAndConfiguration
